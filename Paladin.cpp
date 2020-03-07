@@ -2,7 +2,7 @@
 #include "Utility.h"
 
 Paladin::Paladin(std::string name_, int hp_, int armor_) : 
-    Character(hp_, armor_, 4), // Attack for Paladin is 4
+    Character(hp_, armor_, 10), // Attack for Paladin is 10
     name(name_) // Name not included in Character class
     {}
 
