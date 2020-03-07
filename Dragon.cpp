@@ -5,7 +5,9 @@
 Dragon::Dragon(std::string name_, int hp_, int armor_) : 
     Character(hp_, armor_, 80), // Attack for Dragon is 80
     name(name_) // Name not included in Character class
-    {}
+    {
+        // Dragons don't carry items
+    }
 
 const std::string& Dragon::getName() 
 {
