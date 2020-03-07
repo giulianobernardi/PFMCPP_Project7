@@ -1,7 +1,22 @@
 #include "Dragon.h"
 #include "DragonSlayer.h"
+#include "Utility.h"
 
-//Dragon::Dragon
+Dragon::Dragon(std::string name_, int hp_, int armor_) : 
+    Character(hp_, armor_, 80), // Attack for Dragon is 80
+    name(name_) // Name not included in Character class
+    {}
+
+const std::string& Dragon::getName() 
+{
+    return name;
+}
+
+std::string Dragon::getStats() 
+{
+    return getCharacterStats(this); // Function defined in Utility.h
+}
+
 
 void Dragon::attack(Character &other)
 {
