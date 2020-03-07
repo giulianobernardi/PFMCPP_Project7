@@ -1,14 +1,13 @@
 #include "DragonSlayer.h"
 #include "Dragon.h"
 #include "Utility.h"
-#include <random>
 
 DragonSlayer::DragonSlayer(std::string name_, int hp_, int armor_) : 
     Character(hp_, armor_, 4), // Attack for DragonSlayer is 4
     name(name_) // Name not included in Character class
     {
-        helpfulItems = makeHelpfulItems(random() % 10);
-        defensiveItems = makeDefensiveItems(random() % 10);
+        helpfulItems = makeHelpfulItems(rand() % 10 + 1);
+        defensiveItems = makeDefensiveItems(rand() % 10 + 1);
     }
 
 const std::string& DragonSlayer::getName() 
