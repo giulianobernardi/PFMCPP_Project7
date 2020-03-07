@@ -92,9 +92,12 @@ void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
     {
-        hitPoints = *initialHitPoints * 1.10;
-        armor = *initialArmorLevel * 1.10;
-        attackDamage = *initialAttackDamage * 1.10;
+        // if (hitPoints < *initialHitPoints)
+            hitPoints = *initialHitPoints * 1.10;
+        // if (armor < *initialArmorLevel)
+            armor = *initialArmorLevel * 1.10;
+        // if (attackDamage < *initialAttackDamage)            
+            attackDamage = *initialAttackDamage * 1.10;
         *initialHitPoints = hitPoints;
         *initialArmorLevel = armor;
         *initialAttackDamage = attackDamage;

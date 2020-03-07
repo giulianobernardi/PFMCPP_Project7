@@ -2,6 +2,8 @@
 
 #include "Character.h"
 
+#include "AttackItem.h"
+
 struct DragonSlayer : Character
 {
     DragonSlayer(std::string name_, int hp_, int armor_);
@@ -11,4 +13,5 @@ struct DragonSlayer : Character
     void attack(Character& other) override;
 private:
     const std::string name;
+    std::unique_ptr<AttackItem> attackItem{new AttackItem()}; // Only DragonSlayer has 1 attack item
 };
