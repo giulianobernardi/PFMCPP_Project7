@@ -1,6 +1,7 @@
 #include "Character.h"
 #include <iostream>
 #include <vector>
+#include <math.h> 
 
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
@@ -93,17 +94,17 @@ void Character::attackInternal(Character& other)
     if( other.hitPoints <= 0 )
     {
         if (hitPoints < *initialHitPoints)
-            hitPoints = *initialHitPoints * 1.10;
+            hitPoints = round(static_cast<double>(*initialHitPoints) * 1.10);
         else 
-            hitPoints *= 1.10;
+            hitPoints = round(static_cast<double>(hitPoints) * 1.10);
         if (armor < *initialArmorLevel)
-            armor = *initialArmorLevel * 1.10;
+            armor = round(static_cast<double>(*initialArmorLevel) * 1.10);
         else
-            armor *= 1.10;
+            armor = round(static_cast<double>(armor) * 1.10);
         if (attackDamage < *initialAttackDamage)            
-            attackDamage = *initialAttackDamage * 1.10;
+            attackDamage = round(static_cast<double>(*initialAttackDamage) * 1.10);
         else
-            attackDamage *= 1.10;
+            attackDamage = round(static_cast<double>(attackDamage) * 1.10);
         *initialHitPoints = hitPoints;
         *initialArmorLevel = armor;
         *initialAttackDamage = attackDamage;
