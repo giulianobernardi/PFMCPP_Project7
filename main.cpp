@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 /*
 Project 7: Part 1/1
  video: Chapter 4 Part 2 
@@ -39,6 +40,11 @@ it's very easy to mess this task up.
         add an instance of it to the DragonSlayer class
         make the DragonSlayer::attack use it when the dragonSlayer attacks a dragon. 
 
+8) Clear the warnings as best you can.   
+         for the 'vtables' warnings coming from a header file, move any virtual function implementations to the complementary cpp file.
+         for 'shadow' warnings, rename the offending variable.
+         casting is introduced in the next video and project, so ignore any 'implicit conversion' warnings.
+
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
  
  Send me the the link to your repl.it in a DM on Slack
@@ -57,33 +63,56 @@ it's very easy to mess this task up.
 //==========================================================
 int main()
 {
-                      //name, hit points, armor. 
+    std::srand(std::time(nullptr));; // Initialize random seed using the time
+
+    //name, hit points, armor. 
     Dwarf dwarf { "Maldin the Dwarf", 3, 1 };
     Paladin paladin { "Warrick the Paladin", 5, 2 };
     Dragon dragon { "Garry The Dragon", 200, 50 };
     DragonSlayer dragonSlayer { "Virgil the Dragon Slayer", 8, 5 };
     
-    std::cout << "\nstart of battle" << std::endl;
+    std::cout << "\nstart of battle\n\n" << std::endl;
+
+    std::vector<Character*> characters { &dwarf, &paladin, &dragon, &dragonSlayer };
+    for( auto* character : characters )
+        character->printStats();
+
+    std::cout << "\n*********************************************\n" << std::endl;
 
     paladin.defend();
+    std::cout << "-----------------" << std::endl;
     dragon.attack( paladin );
+    std::cout << "-----------------" << std::endl;
     dwarf.attack( dragon );
+    std::cout << "-----------------" << std::endl;
     paladin.attack( dragon ); //can't, he's dead
+
+    std::cout << "\n========================================\n" << std::endl;
     
     dragonSlayer.help( paladin ); //now he's not dead
+    std::cout << "-----------------" << std::endl;
     paladin.attack( dragon ); //he's alive now.
+    std::cout << "-----------------" << std::endl;
     dragon.attack( dwarf ); //dwarf is dead
+    std::cout << "-----------------" << std::endl;
     paladin.help(dwarf); //dwarf is alive now.
+
+    std::cout << "\n========================================\n" << std::endl;
     
     dragon.attack( dragonSlayer ); //he dodges
+    std::cout << "-----------------" << std::endl;
     dragonSlayer.attack( dragon ); //dragon is slayed.
+    std::cout << "-----------------" << std::endl;
     //the dragon slayer has no friends and kills everyone 
     dragonSlayer.attack( paladin );
+    std::cout << "-----------------" << std::endl;
     dragonSlayer.attack( dwarf ); 
     
+    std::cout << "\n*********************************************\n" << std::endl;
+
     std::cout << std::endl << "end of battle stats:" << std::endl;
     
-    std::vector<Character*> characters { &dwarf, &paladin, &dragon, &dragonSlayer };
+    // std::vector<Character*> characters { &dwarf, &paladin, &dragon, &dragonSlayer };
     for( auto* character : characters )
         character->printStats();
     
