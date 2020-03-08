@@ -92,18 +92,18 @@ void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
     {
-        // if (hitPoints < *initialHitPoints)
+        if (hitPoints <= *initialHitPoints)
             hitPoints = *initialHitPoints * 1.10;
-        // if (armor < *initialArmorLevel)
+        if (armor <= *initialArmorLevel)
             armor = *initialArmorLevel * 1.10;
-        // if (attackDamage < *initialAttackDamage)            
+        if (attackDamage <= *initialAttackDamage)            
             attackDamage = *initialAttackDamage * 1.10;
         *initialHitPoints = hitPoints;
         *initialArmorLevel = armor;
         *initialAttackDamage = attackDamage;
         /*
         When you defeat another Character: 
-            a) your stats are restored to their initial value
+            a) your stats are restored to their initial value if they are lower than it.
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */

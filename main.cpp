@@ -40,6 +40,11 @@ it's very easy to mess this task up.
         add an instance of it to the DragonSlayer class
         make the DragonSlayer::attack use it when the dragonSlayer attacks a dragon. 
 
+8) Clear the warnings as best you can.   
+         for the 'vtables' warnings coming from a header file, move any virtual function implementations to the complementary cpp file.
+         for 'shadow' warnings, rename the offending variable.
+         casting is introduced in the next video and project, so ignore any 'implicit conversion' warnings.
+
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
  
  Send me the the link to your repl.it in a DM on Slack
